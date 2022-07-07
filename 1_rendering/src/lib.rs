@@ -52,7 +52,20 @@ impl Game {
     pub fn render(&self) -> String {
         let mut result = String::new();
 
-        unimplemented!()
+        let written: i32 = 0;
+        for (idx, cell) in self.state.iter().enumerate() {
+            if idx > 0 && idx % 3 == 0 {
+                result += "\n";
+            }
+
+            match cell {
+                Cell::Nort => result += "o",
+                Cell::Cross => result += "X",
+                Cell::None => result += " "
+            }
+        }
+
+        return result;
     }
 
     pub fn make_move(&self, x: usize, y: usize) -> MoveResult {
